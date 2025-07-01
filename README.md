@@ -1,107 +1,79 @@
-**Backend Chat Application**
-This repository contains the backend for a real-time chat application built with Node.js, Express, MongoDB, and JWT-based authentication.
+# 💬 Backend Chat Application
 
-Overview
+This repository contains the **backend for a real-time chat application** built using **Node.js**, **Express**, **MongoDB**, and **JWT-based authentication**. It offers secure login, user management, real-time messaging support, and avatar uploads.
 
-. Server: Node.js + Express
+📁 **Repository**: [Backend-ChatApplication](https://github.com/Priyansu22382/Backend-ChatApplication)
 
-. Database: MongoDB (via Mongoose)
+---
 
-. Auth: JWT tokens + httpOnly cookies
+## 🚀 Tech Stack
 
-Features:
+- ⚙️ **Node.js + Express** – Server and routing
+- 🛢 **MongoDB + Mongoose** – NoSQL database with schema validation
+- 🔐 **JWT + httpOnly Cookies** – Secure authentication
+- ☁️ **Cloudinary** – For image/avatar uploads
+- 🧪 **Middleware** – For protecting routes and token verification
 
-. User registration, login, logout
+---
 
-. Profile updating (avatar upload via Cloudinary)
+## ✨ Features
 
-. Protected routes with middleware
+- 👤 User registration, login, and logout
+- 🧾 JWT-based authentication via secure cookies
+- 🖼️ Profile update with avatar image (Cloudinary)
+- 🔐 Protected routes using custom middleware
+- 💬 Real-time messaging logic (text/image)
+- 📦 Scalable file structure
 
-. Real-time chat logic (message storage, retrieval)
+---
+
+## 🗂️ Folder Structure
 
 backend/
-├─ src/
-│  ├─ controllers/         # Request handlers for auth, user, message logic
-│  ├─ middlewares/         # JWT authentication middleware
-│  ├─ models/              # Mongoose schemas: User, Message
-│  ├─ routes/              # API endpoints grouped by feature
-│  ├─ lib/
-│  │    ├─ db.js           # MongoDB connection
-│  │    ├─ cloudinary.js   # Cloudinary setup
-│  │    └─ utils.js        # Token generation
-│  └─ index.js             # Express server setup
-├─ .env                    # Environment variables (Mongo URL, JWT secret, Cloudinary credentials)
-├─ package.json            # Project dependencies & scripts
-└─ README.md               # This file
+│
+├── src/
+│   ├── controllers/         # Request handlers (auth, user, message)
+│   ├── middlewares/         # JWT authentication middleware
+│   ├── models/              # Mongoose schemas (User, Message)
+│   ├── routes/              # API endpoints grouped by feature
+│   ├── lib/
+│   │   ├── db.js            # MongoDB connection setup
+│   │   ├── cloudinary.js    # Cloudinary configuration
+│   │   └── utils.js         # Token generation & utilities
+│   └── index.js             # Main Express app entry point
+│
+├── .env                     # Environment variables (Mongo URI, JWT, Cloudinary keys)
+├── package.json             # Dependencies and scripts
+└── README.md                # Project documentation
 
 
-** Installation **
+---
 
-1. git clone https://github.com/Priyansu22382/Backend-ChatApplication.git
-cd Backend-ChatApplication
+## 🔧 Installation & Setup
 
-2. npm install
+To run the server locally:
 
-3. .env File:
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/Priyansu22382/Backend-ChatApplication.git
+   cd Backend-ChatApplication
+
+2. **Install Dependencies**
+    npm install
+
+3. **Create a .env file**
+   
    PORT=5001
    MONGODB_URI=<your_mongo_uri>
    JWT_SECRET=<your_jwt_secret>
-   CLOUDINARY_CLOUD_NAME=<cloud_name>
-   CLOUDINARY_API_KEY=<api_key>
-   CLOUDINARY_API_SECRET=<api_secret>
+   CLOUDINARY_CLOUD_NAME=<your_cloud_name>
+   CLOUDINARY_API_KEY=<your_api_key>
+   CLOUDINARY_API_SECRET=<your_api_secret>
 
-4. Start the server : npm run dev
+   
+4. **Start The Server**
 
+   npm run dev
 
-
-** API Endpoints **
-
-Auth Routes (/api/auth)
-POST /signup – Register a new user
-
-POST /login – Log in existing user
-
-POST /logout – Clear auth cookie
-
-PUT /update-profile (protected) – Upload avatar
-
-GET /check (protected) – Verify authentication status
-
-**Message Routes** (/api/message)
-GET /users (protected) – List other users for chat sidebar
-
-GET /:id (protected) – Get chat messages with a user
-
-POST /send/:id (protected) – Send a message (text/image)
-
-**How It Works**
-
-
-Signup/Login
-
-Validates input
-
-Hashes password (bcrypt)
-
-Generates a JWT token (expires in 7 days)
-
-Saves token in httpOnly cookie
-
-Protected Routes
-
-protectRoute middleware checks cookie, verifies JWT
-
-Attaches req.user and continues
-
-Profile Upload
-
-Receives Base64 image string
-
-Uploads to Cloudinary
-
-Stores secure URL in user document
-
-Messaging
-
-Save and fetch conversation history between user pairs
 
